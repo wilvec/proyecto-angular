@@ -1,0 +1,77 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <div class="message success" *ngIf="status == 'success'">
+    El proyecto se ha creado correctamente. <a [routerLink]="['/proyecto', project._id]">verlo aquí</a>.
+  </div>
+  <div class="message failed" *ngIf="status == 'failed'">
+    No se pudo crear el proyecto.
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Nombre</label>
+      <input type="text" formControlName="name"/>
+      <span class="form-error" *ngIf="submitted && f.name.errors?.required">El nombre es obligatorio</span>
+    </p>
+    <p>
+      <label for="description">Descripción</label>
+      <textarea formControlName="description"></textarea>
+      <span class="form-error" *ngIf="submitted && f.description.errors?.required">La descripción es obligatorio</span>
+    </p>
+    <p>
+      <label for="year">Año lanzamiento</label>
+      <input type="number" formControlName="year" />
+      <span class="form-error" *ngIf="submitted && f.description.errors?.required">El año es obligatorio</span>
+    </p>
+    <p>
+      <label for="category">Categoría</label>
+      <input type="text" formControlName="category" />
+      <span class="form-error" *ngIf="submitted && f.category.errors?.required">La categoría es obligatoria</span>
+    </p>
+    <p>
+      <label for="langs">Lenguajes utilizados</label>
+      <input type="text" formControlName="langs" />
+      <span class="form-error" *ngIf="submitted && f.langs.errors?.required">Debe escribir los Lenguajes asociados al proyecto</span>
+    </p>
+    <p>
+      <input type="file" (change)="fileChangeEvent($event)"/>
+    </p>
+    <button type="submit">Enviar</button>
+    <button type="reset" >Limpiar</button>
+
+  </form>
+    <!-- <input type="submit" value="Enviar" [disabled]="!form.valid" />
+    <button type="submit" [disabled]="!projectForm.valid">Enviar</button>
+  </form>
+
+  <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+    <p>
+      <label for="name">Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required/>
+      <span class="form-error" *ngIf="name.touched && !name.valid">El nombre es obligatorio</span>
+    </p>
+    <p>
+      <label for="description">Descripción</label>
+      <textarea name="description" #description="ngModel" [(ngModel)]="project.description" required>
+      </textarea>
+      <span class="form-error" *ngIf="description.touched && !description.valid">La descripción es obligatorio</span>
+    </p>
+    <p>
+      <label for="year">Año lanzamiento</label>
+      <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" required />
+      <span class="form-error" *ngIf="year.touched && !year.valid">El año es obligatorio</span>
+    </p>
+    <p>
+      <label for="category">Categoría</label>
+      <input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required />
+      <span class="form-error" *ngIf="category.touched && !category.valid">La categoría es obligatoria</span>
+    </p>
+    <p>
+      <label for="langs">Lenguajes utilizados</label>
+      <input type="text" name="langs" #langs="ngModel" [(ngModel)]="project.langs" required />
+      <span class="form-error" *ngIf="langs.touched && !langs.valid">Debe escribir los Lenguajes asociados al proyecto</span>
+    </p>
+    <input type="submit" value="Enviar" [disabled]="!form.valid" />
+    <button type="submit" [disabled]="!projectForm.valid">Enviar</button>
+  </form>
+  -->
+</div>
